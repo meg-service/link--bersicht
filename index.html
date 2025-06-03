@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,19 +9,20 @@
   <style>
     body {
       font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
-      margin: 40px;
+      margin: 0;
+      padding: 20px;
       background-color: #f4f4f4;
       color: #333;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 600px;
     }
     h1 {
       text-align: center;
-      margin-bottom: 40px;
-    }
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      justify-content: center;
+      margin-bottom: 30px;
     }
     .column {
       background-color: white;
@@ -30,8 +32,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 500px;
-      margin: 0 auto;
     }
     .column h2 {
       margin-bottom: 20px;
@@ -45,15 +45,21 @@
       width: 100%;
       max-width: 300px;
       text-align: center;
-      margin-top: 10px;
       background-color: #e8f0fe;
       color: #333;
+    }
+    .link-container {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .link-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 12px auto;
+      margin: 10px 0;
       padding: 14px 20px;
       font-size: 16px;
       background-color: #0078D4;
@@ -61,7 +67,6 @@
       border: none;
       border-radius: 10px;
       text-decoration: none;
-      text-align: center;
       width: 100%;
       max-width: 400px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -74,15 +79,11 @@
     .link-button span {
       margin-left: 8px;
     }
-    .link-container {
-      margin-top: 20px;
-      width: 100%;
-    }
   </style>
 </head>
 <body>
-<h1>Meine gespeicherten Webseiten</h1>
-<div class="grid-container">
+<div class="wrapper">
+  <h1>Meine gespeicherten Webseiten</h1>
   <div class="column">
     <h2>Arbeit</h2>
     <select class="select-box" onchange="zeigeLinks('arbeit', this.value)">
@@ -104,7 +105,7 @@
         { name: "BASF Kontraktoren-Pass", url: "https://communications.extranet.basf.com/portal/basf/de/dt.jsp?setCursor=1_926664" },
         { name: "BASF Infocenter", url: "https://basf.sharepoint.com/sites/technical-rules/contractor-management" },
         { name: "BASF Technical Extranet", url: "https://basf.sharepoint.com/sites/technical-rules/Rohrklassen/Forms/AllItems.aspx" },
-        { name: "BASF DigiTi", url: "https://federation.basf.com/nidp/app/login?id=3IAM&sid=0&option=credential&sid=0&target=https%3A%2F%2Ffederation.basf.com%2Fnidp%2Foauth%2Fnam%2Fauthz%3Fresponse_type%3Dcode%26client_id%3Dec35ac09-2e48-41e3-a94f-88d52b262105%26scope%3Dprofile1%2BDigiTi%2BAppStorePortal%26state%3DHENgNb5eVZ5f1HrJiyCP1IVAHqZKikWHBUdmkJgoUBo%3D%26redirect_uri%3Dhttps%3A%2F%2Fdigiti.basf.com%2Flogin%2Foauth2%2Fcode%2Fbasffederationlogin%26acr_values%3D3IAM%2FLogin%2FExternal" }
+        { name: "BASF DigiTi", url: "https://digiti.basf.com" }
       ]
     }
   };
