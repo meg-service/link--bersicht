@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meine gespeicherten Webseiten</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
       font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
       margin: 40px;
       background-color: #f4f4f4;
-      color: #333333;
+      color: #333;
     }
     h1 {
       text-align: center;
@@ -17,67 +18,65 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
+      justify-content: center;
     }
     .column {
       background-color: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
     }
     .column h2 {
       margin-bottom: 20px;
-      color: #222222;
+      color: #222;
     }
     .select-box {
       padding: 10px;
       font-size: 16px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      width: 200px;
+      width: 100%;
+      max-width: 300px;
       text-align: center;
       margin-top: 10px;
       background-color: #e8f0fe;
-      color: #333333;
-      transition: width 0.2s ease;
+      color: #333;
     }
     .link-button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px auto;
+      padding: 14px 20px;
       font-size: 16px;
       background-color: #0078D4;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
-      width: 80%;
-      max-width: 240px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background 0.2s ease, transform 0.2s ease;
     }
     .link-button:hover {
       background-color: #005A9E;
+      transform: scale(1.02);
+    }
+    .link-button span {
+      margin-left: 8px;
     }
     .link-container {
       margin-top: 20px;
       width: 100%;
-    }
-    @media (max-width: 1200px) {
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 600px) {
-      body { margin: 20px; }
-      .grid-container { grid-template-columns: 1fr; gap: 20px; }
-      .select-box, .link-button {
-        width: 100%;
-        max-width: 100%;
-      }
     }
   </style>
 </head>
@@ -86,40 +85,13 @@
 <div class="grid-container">
   <div class="column">
     <h2>Arbeit</h2>
-    <select class="select-box" onchange="zeigeLinks('arbeit',this.value)">
+    <select class="select-box" onchange="zeigeLinks('arbeit', this.value)">
       <option value="">-- Firma wählen --</option>
       <option value="basf">BASF</option>
       <option value="evonik">Evonik</option>
       <option value="shell">Shell</option>
     </select>
     <div id="arbeit-links" class="link-container"></div>
-  </div>
-  <div class="column">
-    <h2>Schulungen</h2>
-    <select class="select-box" onchange="zeigeLinks('schulungen',this.value)">
-      <option value="">-- Kategorie wählen --</option>
-      <option value="ms">Microsoft</option>
-      <option value="udemy">Udemy</option>
-    </select>
-    <div id="schulungen-links" class="link-container"></div>
-  </div>
-  <div class="column">
-    <h2>Netzwerke</h2>
-    <select class="select-box" onchange="zeigeLinks('netzwerke',this.value)">
-      <option value="">-- Plattform wählen --</option>
-      <option value="linkedin">LinkedIn</option>
-      <option value="xing">Xing</option>
-    </select>
-    <div id="netzwerke-links" class="link-container"></div>
-  </div>
-  <div class="column">
-    <h2>Allgemein</h2>
-    <select class="select-box" onchange="zeigeLinks('allgemein',this.value)">
-      <option value="">-- Thema wählen --</option>
-      <option value="suchmaschinen">Suchmaschinen</option>
-      <option value="nachrichten">Nachrichten</option>
-    </select>
-    <div id="allgemein-links" class="link-container"></div>
   </div>
 </div>
 <script>
@@ -133,26 +105,7 @@
         { name: "BASF Infocenter", url: "https://basf.sharepoint.com/sites/technical-rules/contractor-management" },
         { name: "BASF Technical Extranet", url: "https://basf.sharepoint.com/sites/technical-rules/Rohrklassen/Forms/AllItems.aspx" },
         { name: "BASF DigiTi", url: "https://federation.basf.com/nidp/app/login?id=3IAM&sid=0&option=credential&sid=0&target=https%3A%2F%2Ffederation.basf.com%2Fnidp%2Foauth%2Fnam%2Fauthz%3Fresponse_type%3Dcode%26client_id%3Dec35ac09-2e48-41e3-a94f-88d52b262105%26scope%3Dprofile1%2BDigiTi%2BAppStorePortal%26state%3DHENgNb5eVZ5f1HrJiyCP1IVAHqZKikWHBUdmkJgoUBo%3D%26redirect_uri%3Dhttps%3A%2F%2Fdigiti.basf.com%2Flogin%2Foauth2%2Fcode%2Fbasffederationlogin%26acr_values%3D3IAM%2FLogin%2FExternal" }
-      ],
-      evonik: [
-        { name: "Evonik Portal", url: "https://portal.evonik.com" },
-        { name: "Evonik Projekte", url: "https://projekte.evonik.com" }
-      ],
-      shell: [
-        { name: "Shell Connect", url: "https://connect.shell.com" }
       ]
-    },
-    schulungen: {
-      ms: [{ name: "Microsoft Learn", url: "https://learn.microsoft.com" }],
-      udemy: [{ name: "Udemy", url: "https://www.udemy.com" }]
-    },
-    netzwerke: {
-      linkedin: [{ name: "LinkedIn", url: "https://www.linkedin.com" }],
-      xing: [{ name: "Xing", url: "https://www.xing.com" }]
-    },
-    allgemein: {
-      suchmaschinen: [{ name: "Google", url: "https://www.google.de" }],
-      nachrichten: [{ name: "Heise", url: "https://www.heise.de" }]
     }
   };
   function zeigeLinks(spalte, auswahl) {
@@ -164,7 +117,7 @@
       a.href = link.url;
       a.target = "_blank";
       a.className = "link-button";
-      a.innerText = link.name;
+      a.innerHTML = "🔗 <span>" + link.name + "</span>";
       container.appendChild(a);
     });
   }
